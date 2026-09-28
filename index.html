@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>M2 無限答題練習 · Oxford New Century Mathematics</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="topbar">
+  <div class="brand">
+    <span class="brand-flame">🔥</span>
+    <div>
+      <h1>M2 無限答題練習</h1>
+      <p class="sub">牛津《數學新世代》M2 · 13 個主題各 30 題 · HKDSE 連續答對 10 題闖關</p>
+    </div>
+  </div>
+  <div class="headstats">
+    <div class="stat"><span class="k">總答對</span><span class="v" id="statTotal">0</span></div>
+    <div class="stat"><span class="k">本局失手</span><span class="v" id="statWrong">0</span></div>
+    <div class="stat"><span class="k">狀態</span><span class="v badge" id="statMode">闖關中</span></div>
+  </div>
+</header>
+
+<main>
+  <!-- ══ 主題切換列：13 個主題按鈕，學生可隨時自行轉主題 ══ -->
+  <section class="panel topic-panel">
+    <div class="panel-head">
+      <h2>① 選擇主題<span class="tip">（隨時可按，切換主題不會中斷連續紀錄）</span></h2>
+      <button id="btnRandomTopic" class="ghost-btn">🎲 隨機主題</button>
+    </div>
+    <div class="topic-grid" id="topicGrid"><!-- 由 app.js 生成 13 個按鈕 --></div>
+  </section>
+
+  <!-- ══ 火焰進度 ══ -->
+  <section class="panel progress-panel">
+    <div class="panel-head">
+      <h2>② 連續答對進度</h2>
+      <span class="streak-text" id="streakText">🔥 目前連續答對：0/10 題</span>
+    </div>
+    <div class="flames" id="flames"><!-- 10 個火 --></div>
+    <p class="status-line" id="statusLine">加油！連續答對 10 題即可啟動「無限訓練模式」。</p>
+  </section>
+
+  <!-- ══ 題目卡 ══ -->
+  <section class="panel question-panel">
+    <div class="panel-head">
+      <h2>③ 題目</h2>
+      <span class="topic-tag" id="topicTag">—</span>
+    </div>
+
+    <div class="sub-tag" id="qSub"><!-- 本題所屬小主題 --></div>
+    <div class="question" id="questionText">載入中…</div>
+
+    <div class="answer-area" id="answerArea">
+      <label for="answerInput" class="small-label">輸入你的答案（可接受 開方2、sqrt(2)、2^(1/2)、3/4、0.75 等寫法）</label>
+      <div class="input-row">
+        <input id="answerInput" type="text" autocomplete="off" spellcheck="false" placeholder="例：√57  或  2x³ − 2x² + 3x + C">
+        <button id="btnSubmit" class="primary-btn">提交答案</button>
+      </div>
+      <div class="hint-row">
+        <button id="btnShowHint" class="ghost-btn small">💡 提示</button>
+        <div class="hint-box" id="hintBox" hidden></div>
+      </div>
+    </div>
+
+    <div class="feedback" id="feedback" hidden></div>
+
+    <div class="solution" id="solution" hidden>
+      <h3>📘 答案與解題（DSE 評分標準）</h3>
+      <div class="std-answer">標準答案：<span id="stdAnswer"></span></div>
+      <div id="solutionBody"></div>
+    </div>
+
+    <div class="next-row">
+      <button id="btnNext" class="primary-btn" hidden>下一題 →</button>
+    </div>
+  </section>
+
+  <section class="panel footer-panel">
+    <button id="btnReset" class="ghost-btn">↺ 重新開始（火歸零）</button>
+    <span class="note">
+      數學輸出全部採用 Unicode 書寫格式（∫ x² dx、√2、3/4），不出現任何原始程式碼符號。
+    </span>
+  </section>
+</main>
+
+<!-- ══ 題庫：13 個主題各一個檔案（各 30 題，覆蓋該主題全部小主題）══ -->
+<script src="bank/induction.js"></script>
+<script src="bank/binomial.js"></script>
+<script src="bank/sincos.js"></script>
+<script src="bank/trig.js"></script>
+<script src="bank/limits.js"></script>
+<script src="bank/diff.js"></script>
+<script src="bank/appdiff.js"></script>
+<script src="bank/indef.js"></script>
+<script src="bank/defint.js"></script>
+<script src="bank/matrix.js"></script>
+<script src="bank/linear.js"></script>
+<script src="bank/vector.js"></script>
+<script src="bank/vectorprod.js"></script>
+
+<script src="questions.js"></script>
+<script src="grader.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
